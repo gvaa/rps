@@ -7,7 +7,7 @@ let playerScore = 0;
 let computerScore = 0;
 let result;
 
-function getComputerChoice() {
+let getComputerChoice = function () {
     let computerChoice = Math.floor(Math.random() * 3);
     switch(computerChoice) {
         case 0:
@@ -19,16 +19,7 @@ function getComputerChoice() {
     }
 }
 
-// function getPlayerChoice() {
-//     while (playerChoice != "rock" &&
-//         playerChoice != "scissors" &&
-//         playerChoice != "paper") {
-//             playerChoice = prompt("Please enter Rock, Paper or Scissors: ").toLowerCase();
-//         } 
-//     return playerChoice;
-// }
-
-function playRound(playerChoice, computerChoice) {
+let getGameResult = function (playerChoice, computerChoice) {
     if (playerChoice == computerChoice) {
         return "It's a Draw";
     }
@@ -39,9 +30,62 @@ function playRound(playerChoice, computerChoice) {
     } else {;
         return "Computer wins";
     }
-    
 }
 
+let createButton = function (id) {
+    const gameButton = document.createElement("button");
+    gameButton.setAttribute("id", id);
+    gameButton.textContent = id;
+    gameButton.addEventListener("click", displayResult); 
+    // divButtons.appendChild(gameButton);
+    return gameButton;
+}
+
+let displayResult = function (e) {
+    let playerChoice = e.target.id;
+    let computerChoice = getComputerChoice();
+    console.log(playerChoice, computerChoice);
+    let gameResult = getGameResult(playerChoice, computerChoice);
+    console.log(gameResult);
+    const resultsDiv = document.createElement("div");
+    resultsDiv.setAttribute("id", "results");
+    if (gameResult == "Player wins") {
+        playerScore++;
+    }
+    else if (gameResult == "Computer wins") {
+        computerScore++;
+    }
+    console.log(`Player wins: ${playerScore} / Computer wins: ${computerScore}`);
+    resultsDiv.textContent = gameResult + `. Current score: player: ${playerScore} / computer: ${computerScore}`;
+    myBody.appendChild(resultsDiv);
+}
+
+const myBody = document.body;
+const divButtons = document.createElement("div");
+
+divButtons.appendChild(createButton("rock"));
+divButtons.appendChild(createButton("paper"));
+divButtons.appendChild(createButton("scissors"));
+// createButton("rock");
+// createButton("paper");
+// createButton("scissors");
+
+myBody.appendChild(divButtons);
+
+
+
+
+// some old code preserved for myself
+//
+// function getPlayerChoice() {
+//     while (playerChoice != "rock" &&
+//         playerChoice != "scissors" &&
+//         playerChoice != "paper") {
+//             playerChoice = prompt("Please enter Rock, Paper or Scissors: ").toLowerCase();
+//         } 
+//     return playerChoice;
+// }
+//
 // function playGame(numberGames) {
 //     for (let i = 0; i < numberGames; i++) {
 //         console.log(`Round Number ${i+1}`)
@@ -66,52 +110,6 @@ function playRound(playerChoice, computerChoice) {
 //         return `It's a ${playerScore} / ${computerScore} draw!`; // nb! only back tick ` works for inserting variable into string...
 //       }
 // }
-
+//
 // console.log(`Rounds to be played: ${numberGames}`);
 // console.log(playGame(numberGames));
-
-const myBody = document.body;
-
-const divButtons = document.createElement("div");
-
-// const paperButton = document.createElement("button");
-// const rockButton = document.createElement("button");
-// const scissorsButton = document.createElement("button");
-
-// const gameButton = document.createElement("button");
-
-let createButton = function (id) {
-    const gameButton = document.createElement("button");
-    gameButton.setAttribute("id", id);
-    gameButton.textContent = id;
-    // gameButton.addEventListener("click", () => {
-    //     // gameButton.remove();
-    //     console.log(id);
-    // }); 
-    gameButton.addEventListener("click", checkResult); 
-    return gameButton;
-}
-
-let checkResult = function (e) {
-    let playerChoice = e.target.id;
-    let computerChoice = getComputerChoice();
-    console.log(playerChoice, computerChoice);
-    console.log(playRound(playerChoice, computerChoice));
-}
-
-
-
-
-divButtons.appendChild(createButton("rock"));
-divButtons.appendChild(createButton("paper"));
-divButtons.appendChild(createButton("scissors"));
-
-myBody.appendChild(divButtons);
-
-
-
-
-
-
-
-
