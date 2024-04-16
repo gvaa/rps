@@ -20,18 +20,9 @@ button {
 }
 
 button.selected {
-    /* font-family: 'Inter', 'Franklin Gothic Medium', 'Helvetica', 'Arial', sans-serif; 
-    background-color: #3882f6;
-    color: #f9faf8;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 5px 10px;
-    margin: 35px 0; */
     border: solid;
     border-width: 1px;
     border-radius: 5px;  
-    /* min-width: 110px; */
-    /* color: rgb(242, 1, 49); */
 }
 
 #ai {
@@ -40,9 +31,7 @@ button.selected {
 }
 
 div#buttons, div#computer {
-    /* padding: 0 10% 0 10%; */
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     gap: 30px;
     background-color: #1f2937;
@@ -56,7 +45,6 @@ p {
     margin: 0;
     text-align: center;
     color: #45e88c;
-    /* transition: 0.5s; */
     animation: blinker 1.0s linear infinite;
 }
 
@@ -70,10 +58,6 @@ div#results{
     padding: 50px 10% 50px 10%;
     height: 20px;
     text-align: center;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* gap: 50px; */
 }
 
 div#final{
@@ -81,9 +65,4 @@ div#final{
     height: 20px;
     text-align: center;
     background-color: #e5e7eb;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* gap: 50px; */
-    /* background-color: #e5e7eb; */
 }

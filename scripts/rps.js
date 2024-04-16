@@ -5,9 +5,9 @@ let computerChoice = "click blue";
 let numberGames = 5;
 let playerScore = 0;
 let computerScore = 0;
+let roundNumber = 0;
 let result;
 let winner;
-// let selectedButton = document.getElementById(playerChoice);
 
 let getComputerChoice = function () {
     let computerChoice = Math.floor(Math.random() * 3);
@@ -44,8 +44,6 @@ let createButton = function (id) {
 }
 
 let displayResult = function (e) {
-    // selectedButton.setAttribute("class", "selected");
-    
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
         button.setAttribute("class", "unselected");
@@ -63,7 +61,8 @@ let displayResult = function (e) {
         computerScore++;
     }
     computerButton.textContent = computerChoice;
-    resultsDiv.textContent = gameResult + `. Current score: player: ${playerScore} / computer: ${computerScore}`;
+    roundNumber ++;
+    resultsDiv.textContent = `Round # ${roundNumber} | Current score: player -> ${playerScore} / computer -> ${computerScore}`;
       if (playerScore == 5 || computerScore == 5) {
         if (playerScore > computerScore) {
             winner = "Player";
@@ -72,24 +71,19 @@ let displayResult = function (e) {
         playerScore = 0;
         computerScore = 0;
         winner = "";
+        roundNumber = 0;
     }
 }
 
 const myBody = document.body;
-// const buttonsDiv = document.createElement("div");
-// buttonsDiv.setAttribute("id", "buttons");
 const buttonsDiv = document.querySelector('#buttons');
-// const computerDiv = document.createElement("div");
-// computerDiv.setAttribute("id", "computer");
 const computerDiv = document.querySelector('#computer');
 const computerButton = document.createElement("button");
 computerButton.setAttribute("id", "ai");
 computerButton.textContent = computerChoice;
-// const resultsDiv = document.createElement("div");
-// resultsDiv.setAttribute("id", "results");
+
 const resultsDiv = document.querySelector('#results');
-// const finalDiv = document.createElement("div");
-// finalDiv.setAttribute("id", "final");
+
 const finalDiv = document.querySelector('#final');
 
 buttonsDiv.appendChild(createButton("rock"));
@@ -99,13 +93,3 @@ buttonsDiv.appendChild(createButton("scissors"));
 // createButton("paper");
 // createButton("scissors");
 computerDiv.appendChild(computerButton);
-// myBody.appendChild(buttonsDiv);
-// myBody.appendChild(computerDiv);
-// myBody.appendChild(resultsDiv);
-// myBody.appendChild(finalDiv);
-
-// js blinker, used css instead
-// const blink = document.querySelector("p");
-// setInterval(function() {
-//     blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
-// }, 1500);
