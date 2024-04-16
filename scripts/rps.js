@@ -7,6 +7,7 @@ let playerScore = 0;
 let computerScore = 0;
 let result;
 let winner;
+// let selectedButton = document.getElementById(playerChoice);
 
 let getComputerChoice = function () {
     let computerChoice = Math.floor(Math.random() * 3);
@@ -43,9 +44,18 @@ let createButton = function (id) {
 }
 
 let displayResult = function (e) {
+    // selectedButton.setAttribute("class", "selected");
+    
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.setAttribute("class", "unselected");
+    });
+
     let playerChoice = e.target.id;
     let computerChoice = getComputerChoice();
     let gameResult = getGameResult(playerChoice, computerChoice);
+    let selectedButton = document.getElementById(playerChoice);
+    selectedButton.setAttribute("class", "selected");
     if (playerScore == 0 && computerScore == 0) {finalDiv.textContent = "";}
     if (gameResult == "Player wins") {
         playerScore++;
@@ -66,18 +76,21 @@ let displayResult = function (e) {
 }
 
 const myBody = document.body;
-
-const buttonsDiv = document.createElement("div");
-buttonsDiv.setAttribute("id", "buttons");
-const computerDiv = document.createElement("div");
-computerDiv.setAttribute("id", "computer");
+// const buttonsDiv = document.createElement("div");
+// buttonsDiv.setAttribute("id", "buttons");
+const buttonsDiv = document.querySelector('#buttons');
+// const computerDiv = document.createElement("div");
+// computerDiv.setAttribute("id", "computer");
+const computerDiv = document.querySelector('#computer');
 const computerButton = document.createElement("button");
 computerButton.setAttribute("id", "ai");
 computerButton.textContent = computerChoice;
-const resultsDiv = document.createElement("div");
-resultsDiv.setAttribute("id", "results");
-const finalDiv = document.createElement("div");
-finalDiv.setAttribute("id", "final");
+// const resultsDiv = document.createElement("div");
+// resultsDiv.setAttribute("id", "results");
+const resultsDiv = document.querySelector('#results');
+// const finalDiv = document.createElement("div");
+// finalDiv.setAttribute("id", "final");
+const finalDiv = document.querySelector('#final');
 
 buttonsDiv.appendChild(createButton("rock"));
 buttonsDiv.appendChild(createButton("paper"));
@@ -85,10 +98,14 @@ buttonsDiv.appendChild(createButton("scissors"));
 // createButton("rock");
 // createButton("paper");
 // createButton("scissors");
-
 computerDiv.appendChild(computerButton);
+// myBody.appendChild(buttonsDiv);
+// myBody.appendChild(computerDiv);
+// myBody.appendChild(resultsDiv);
+// myBody.appendChild(finalDiv);
 
-myBody.appendChild(buttonsDiv);
-myBody.appendChild(computerDiv);
-myBody.appendChild(resultsDiv);
-myBody.appendChild(finalDiv);
+// js blinker, used css instead
+// const blink = document.querySelector("p");
+// setInterval(function() {
+//     blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+// }, 1500);
