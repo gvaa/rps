@@ -1,4 +1,4 @@
-# A simple implementation of Rock, Paper, Scissors game with JavaScript
-Branch for transitioning from console output to UI.
+# A simple implementation of Rock, Paper & Scissors game with JavaScript
+A simple Rock, Paper & Scissors game made with JavaScript and styled with CSS.
 
-As a part of The Odin Project.
+Coded as a part of The Odin Project.
