@@ -17,7 +17,11 @@ button {
     min-width: 110px;
 }
 
-div#buttons {
+#ai {
+    background-color: crimson;
+}
+
+div#buttons, div#computer {
     padding: 0 10% 0 10%;
     display: flex;
     /* align-items: center; */

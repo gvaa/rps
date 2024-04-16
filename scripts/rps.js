@@ -1,7 +1,7 @@
 "use strict";
 
 let playerChoice;
-let computerChoice;
+let computerChoice = "click blue";
 let numberGames = 5;
 let playerScore = 0;
 let computerScore = 0;
@@ -52,6 +52,7 @@ let displayResult = function (e) {
     } else if (gameResult == "Computer wins") {
         computerScore++;
     }
+    computerButton.textContent = computerChoice;
     resultsDiv.textContent = gameResult + `. Current score: player: ${playerScore} / computer: ${computerScore}`;
       if (playerScore == 5 || computerScore == 5) {
         if (playerScore > computerScore) {
@@ -68,6 +69,11 @@ const myBody = document.body;
 
 const buttonsDiv = document.createElement("div");
 buttonsDiv.setAttribute("id", "buttons");
+const computerDiv = document.createElement("div");
+computerDiv.setAttribute("id", "computer");
+const computerButton = document.createElement("button");
+computerButton.setAttribute("id", "ai");
+computerButton.textContent = computerChoice;
 const resultsDiv = document.createElement("div");
 resultsDiv.setAttribute("id", "results");
 const finalDiv = document.createElement("div");
@@ -79,6 +85,10 @@ buttonsDiv.appendChild(createButton("scissors"));
 // createButton("rock");
 // createButton("paper");
 // createButton("scissors");
+
+computerDiv.appendChild(computerButton);
+
 myBody.appendChild(buttonsDiv);
+myBody.appendChild(computerDiv);
 myBody.appendChild(resultsDiv);
 myBody.appendChild(finalDiv);
