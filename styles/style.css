@@ -1,0 +1,47 @@
+body {
+    font-family: 'Nunito', 'Franklin Gothic Medium', 'Helvetica', 'Arial', sans-serif;
+    margin: 0;
+    
+}
+
+button {
+    font-family: 'Nunito', 'Franklin Gothic Medium', 'Helvetica', 'Arial', sans-serif; 
+    background-color: #3882f6;
+    color: #f9faf8;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 5px 35px;
+    margin: 40px 0;
+    border: none;
+    border-radius: 5px;  
+    min-width: 150px;
+}
+
+div#buttons {
+    padding: 0 10% 0 10%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 50px;
+    background-color: #1f2937;
+}
+
+div#results{
+    padding: 50px 10% 50px 10%;
+    text-align: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* gap: 50px; */
+}
+
+div#final{
+    padding: 50px 10% 50px 10%;
+    text-align: center;
+    background-color: #e5e7eb;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* gap: 50px; */
+    /* background-color: #e5e7eb; */
+}

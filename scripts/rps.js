@@ -6,6 +6,7 @@ let numberGames = 5;
 let playerScore = 0;
 let computerScore = 0;
 let result;
+let winner;
 
 let getComputerChoice = function () {
     let computerChoice = Math.floor(Math.random() * 3);
@@ -44,35 +45,43 @@ let createButton = function (id) {
 let displayResult = function (e) {
     let playerChoice = e.target.id;
     let computerChoice = getComputerChoice();
-    console.log(playerChoice, computerChoice);
     let gameResult = getGameResult(playerChoice, computerChoice);
-    console.log(gameResult);
-    const resultsDiv = document.createElement("div");
-    resultsDiv.setAttribute("id", "results");
+    if (playerScore == 0 && computerScore == 0) {finalDiv.textContent = "";}
     if (gameResult == "Player wins") {
         playerScore++;
-    }
-    else if (gameResult == "Computer wins") {
+    } else if (gameResult == "Computer wins") {
         computerScore++;
     }
-    console.log(`Player wins: ${playerScore} / Computer wins: ${computerScore}`);
     resultsDiv.textContent = gameResult + `. Current score: player: ${playerScore} / computer: ${computerScore}`;
-    myBody.appendChild(resultsDiv);
+      if (playerScore == 5 || computerScore == 5) {
+        if (playerScore > computerScore) {
+            winner = "Player";
+            } else {winner = "Computer"};
+        finalDiv.textContent = `Game Over! ${winner} wins!`;
+        playerScore = 0;
+        computerScore = 0;
+        winner = "";
+    }
 }
 
 const myBody = document.body;
-const divButtons = document.createElement("div");
 
-divButtons.appendChild(createButton("rock"));
-divButtons.appendChild(createButton("paper"));
-divButtons.appendChild(createButton("scissors"));
+const buttonsDiv = document.createElement("div");
+buttonsDiv.setAttribute("id", "buttons");
+const resultsDiv = document.createElement("div");
+resultsDiv.setAttribute("id", "results");
+const finalDiv = document.createElement("div");
+finalDiv.setAttribute("id", "final");
+
+buttonsDiv.appendChild(createButton("rock"));
+buttonsDiv.appendChild(createButton("paper"));
+buttonsDiv.appendChild(createButton("scissors"));
 // createButton("rock");
 // createButton("paper");
 // createButton("scissors");
-
-myBody.appendChild(divButtons);
-
-
+myBody.appendChild(buttonsDiv);
+myBody.appendChild(resultsDiv);
+myBody.appendChild(finalDiv);
 
 
 // some old code preserved for myself
